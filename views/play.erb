@@ -1,3 +1,11 @@
 <%= @player_1_name %> vs. <%= @player_2_name %>
 
 <%= @player_2_name %> HP: 30
+
+<a href="/attack">Attack</a>
+
+<%# I could also have used a form element
+(as long as I changed my feature test to use click_button instead of click_link):
+<form action="/attack">
+  <input type="submit" value="Attack">
+</form> %>
