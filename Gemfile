@@ -5,4 +5,5 @@ group :test do
   gem 'rspec'
   gem 'rack'
   gem 'capybara'
+  gem 'shotgun'
 end
