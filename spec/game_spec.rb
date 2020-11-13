@@ -17,11 +17,23 @@ describe Game do
     end
   end
 
-
   describe '#attack' do
     it "reduces the player hit points" do
       expect(player_2).to receive(:receive_attack)
       game.attack(player_2)
+    end
+  end
+
+  describe "#current turn" do
+    it "starts with player_1" do
+      expect(game.current_turn).to eq(player_1)
+    end
+  end
+
+  describe "#switch turn" do
+    it "switches turn to player_2" do
+      game.switch_turn
+      expect(game.current_turn).to eq(player_2)
     end
   end
 end

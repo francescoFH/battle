@@ -1,4 +1,8 @@
-<%= @player_1_name %> attacked <%= @player_2_name %>
+<% if @game.current_turn == @game.player_1 %>
+  <h1><%= @game.player_2.name %> attacked <%= @game.player_1.name %><h1>
+<% else %>
+  <h1><%= @game.player_1.name %> attacked <%= @game.player_2.name %><h1>
+<% end %>
 
 <form action="/play" method="get">
   <input type="submit" name="Play" value="Play again!">
