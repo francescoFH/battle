@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require_relative './lib/player'
 require_relative './lib/game'
+require_relative './lib/attack_class'
 class Battle < Sinatra::Base
   enable :sessions
 
@@ -20,11 +21,28 @@ class Battle < Sinatra::Base
     erb :play
   end
 
+  post '/attack' do
+   Attack.run($game.opponent_of($game.current_turn))
+   if $game.game_over?
+     redirect '/game-over'
+   else
+     redirect '/attack'
+   end
+ end
+
   get '/attack' do
     @game = $game
-    @game.attack(@game.opponent_of(@game.current_turn))
-    @game.switch_turn
     erb :attack
+  end
+
+  post '/switch-turns' do
+    $game.switch_turn
+    redirect('/play')
+  end
+
+  get '/game-over' do
+    @game = $game
+    erb :game_over
   end
   # start the server if ruby file executed directly
   run! if app_file == $0

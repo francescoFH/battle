@@ -2,10 +2,6 @@
 <h2><%= @game.player_1.name %> HP: <%= @game.player_1.hit_points %><h2>
 <h2><%= @game.player_2.name %> HP: <%= @game.player_2.hit_points %><h2>
 <h3><%= @game.current_turn.name %>'s turn!<h3>
-<a href="/attack">Attack</a>
-
-<!-- I could also have used a form element
-(as long as I changed my feature test to use click_button instead of click_link):
-<form action="/attack">
+<form action="/attack" method="post">
   <input type="submit" value="Attack">
-</form> -->
+</form>
